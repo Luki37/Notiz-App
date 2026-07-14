@@ -1,4 +1,86 @@
+* {
+  border: 1px solid red;
+  /* gap: 1rem; */
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  max-height: 100%;
+  width: 100vw;
+  background-color: rgb(227, 245, 220);
+  --buttonColor: rgb(245, 179, 236);
+  --invisible: rgb(255, 255, 255, 0);
+}
+
+#wrapperInput {
+  display: flex;
+  flex-direction: column;
+}
+
+#noteContent {
+  background-color: var(--invisible);
+}
+
+#noteTitle {
+  background-color: var(--invisible);
+}
+
+.Btns {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+#reset,
+#save {
+  background-color: var(--buttonColor);
+}
+
+.hidden {
+}
+
 svg {
   width: 24px;
   height: 24px;
+}
+
+.create {
+  position: absolute;
+  bottom: 5px;
+}
+
+.button {
+  background-color: var(--buttonColor);
+  width: 90vw;
+}
+
+.note {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: center;
+}
+
+#delete {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  background-color: var(--buttonColor);
+}
+
+#title {
+  width: 75vw;
+  display: flex;
+  align-items: center;
+  background-color: var(--invisible);
+}
+
+#title svg {
+  margin-left: auto;
+}
+
+.content {
 }
