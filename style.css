@@ -1,86 +1,126 @@
-* {
-  border: 1px solid red;
-  /* gap: 1rem; */
+@font-face {
+  font-family: "Inter";
+  src: url(font/Inter-VariableFont_opsz\,wght.ttf);
 }
 
 body {
+  font-family: Inter, sans-serif;
   margin: 0;
   padding: 0;
+  display: grid;
+  grid-template-columns: 400px auto;
+  gap: 10px;
   height: 100vh;
-  max-height: 100%;
-  width: 100vw;
-  background-color: rgb(227, 245, 220);
-  --buttonColor: rgb(245, 179, 236);
-  --invisible: rgb(255, 255, 255, 0);
-}
-
-#wrapperInput {
-  display: flex;
-  flex-direction: column;
-}
-
-#noteContent {
-  background-color: var(--invisible);
-}
-
-#noteTitle {
-  background-color: var(--invisible);
-}
-
-.Btns {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-}
-
-#reset,
-#save {
-  background-color: var(--buttonColor);
-}
-
-.hidden {
+  --background-buttons: rgb(235, 84, 222);
+  --hover-button: rgb(235, 84, 222, 0.8);
+  --text-buttons: white;
+  --color-shadow: rgba(0, 0, 0, 0.3);
+  --font-color: rgba(0, 0, 0, 0.5);
+  overflow: hidden;
 }
 
 svg {
-  width: 24px;
-  height: 24px;
+  height: 30px;
+  width: 30px;
 }
 
-.create {
-  position: absolute;
-  bottom: 5px;
-}
-
-.button {
-  background-color: var(--buttonColor);
-  width: 90vw;
-}
-
-.note {
-  position: relative;
+.storage-container {
+  padding: 10px;
   display: flex;
   flex-direction: column;
-  justify-content: end;
+  gap: 10px;
+  border-right: 1px solid gray;
+}
+
+#new-note {
+  height: 100px;
+  background-color: var(--background-buttons);
+  color: var(--text-buttons);
+  font-size: 2rem;
+  border: none;
+  border-radius: 10px;
+  display: inline-flex;
   align-items: center;
+  justify-content: center;
+  gap: 5px;
 }
 
-#delete {
-  position: absolute;
-  top: 5px;
-  left: 5px;
-  background-color: var(--buttonColor);
+#wrapper {
+}
+.card {
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px var(--color-shadow);
+  max-height: 120px;
 }
 
-#title {
-  width: 75vw;
-  display: flex;
-  align-items: center;
-  background-color: var(--invisible);
-}
-
-#title svg {
-  margin-left: auto;
+.title {
+  margin: 0;
+  font-size: 1.5rem;
 }
 
 .content {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--font-color);
+}
+
+.date {
+  text-align: right;
+  color: var(--font-color);
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.title-and-button {
+  margin: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.buttons {
+  height: 100px;
+  display: flex;
+  gap: 10px;
+}
+
+#input-title {
+  font-size: 3rem;
+  border: none;
+}
+
+#save,
+#delete {
+  height: 100px;
+  width: 100px;
+  background-color: var(--background-buttons);
+  border-radius: 10px;
+  border: none;
+  color: var(--text-buttons);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#save:hover,
+#delete:hover,
+#new-note:hover {
+  background-color: var(--hover-button);
+  cursor: pointer;
+}
+
+#input-content {
+  margin: 10px;
+  border: none;
+  width: 95%;
+  height: 80%;
+  font-size: 1.5rem;
+}
+
+@media only screen and (max-width: 600px) {
 }
