@@ -1,17 +1,20 @@
 @font-face {
   font-family: "Inter";
-  src: url(font/Inter-VariableFont_opsz\,wght.ttf);
+  src: url("font/Inter-VariableFont_opsz\,wght.ttf");
+}
+
+* {
+  padding: 0;
+  margin: 0;
 }
 
 body {
   font-family: Inter, sans-serif;
-  margin: 0;
-  padding: 0;
   display: grid;
   grid-template-columns: 400px auto;
-  gap: 10px;
+  gap: 1rem;
   height: 100vh;
-  --background-buttons: rgb(235, 84, 222);
+  --background-buttons: 235, 84, 222;
   --hover-button: rgb(235, 84, 222, 0.8);
   --text-buttons: white;
   --color-shadow: rgba(0, 0, 0, 0.3);
@@ -20,21 +23,24 @@ body {
 }
 
 svg {
-  height: 30px;
-  width: 30px;
+  height: 2.5rem;
+  width: 2.5rem;
 }
 
 .storage-container {
-  padding: 10px;
+  /* padding: 1rem; */
   display: flex;
   flex-direction: column;
-  gap: 10px;
+
   border-right: 1px solid var(--color-shadow);
+  min-height: 0;
 }
 
 #new-note {
-  height: 100px;
-  background-color: var(--background-buttons);
+  font-family: Inter, sans-serif;
+  margin: 1rem;
+  height: 6rem;
+  background-color: rgb(var(--background-buttons));
   color: var(--text-buttons);
   font-size: 2rem;
   border: none;
@@ -42,24 +48,42 @@ svg {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 5px;
+  gap: 0.5rem;
 }
 
 #wrapper {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  min-height: 0;
 }
+
 .card {
-  padding: 10px;
+  padding: 1rem;
   border-radius: 10px;
   box-shadow: 0 0 15px var(--color-shadow);
-  max-height: 120px;
+  max-height: 7rem;
+  transition: all 0.2s ease-in-out;
+
+  margin: 0.5rem 1rem 0.5rem 1rem;
+}
+
+.card:not(.selected-card) {
+  cursor: pointer;
+}
+
+.card:hover,
+.selected-card {
+  background-color: rgba(var(--background-buttons), 0.1);
 }
 
 .title {
-  margin: 0;
   font-size: 1.5rem;
+  font-weight: 500;
 }
 
 .content {
+  margin: 0.5rem 0;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -77,29 +101,31 @@ svg {
 }
 
 .title-and-button {
-  margin: 10px;
+  margin: 1rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  gap: 1rem;
 }
 
 .buttons {
-  height: 100px;
+  height: 6rem;
   display: flex;
-  gap: 10px;
+  gap: 1rem;
 }
 
 #input-title {
   font-size: 3rem;
   border: none;
   outline: none;
+  width: 100%;
 }
 
 #save,
 #delete {
-  height: 100px;
-  width: 100px;
-  background-color: var(--background-buttons);
+  height: 6rem;
+  width: 6rem;
+  background-color: rgb(var(--background-buttons));
   border-radius: 10px;
   border: none;
   color: var(--text-buttons);
@@ -116,11 +142,12 @@ svg {
 }
 
 #input-content {
-  margin: 10px;
+  margin: 1rem;
   border: none;
   width: 95%;
   height: 80%;
   font-size: 1.5rem;
+  resize: none;
   outline: none;
 }
 
