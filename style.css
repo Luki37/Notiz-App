@@ -84,7 +84,9 @@ svg {
 
 .content {
   margin: 0.5rem 0;
-  white-space: nowrap;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
   color: var(--font-color);
@@ -93,6 +95,7 @@ svg {
 .date {
   text-align: right;
   color: var(--font-color);
+  font-style: italic;
 }
 
 .input-container {
