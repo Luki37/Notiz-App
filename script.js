@@ -6,6 +6,8 @@ const wrapper = document.getElementById("wrapper");
 let inputTitle = document.getElementById("input-title");
 let inputContent = document.getElementById("input-content");
 
+renderCard(newCardList);
+
 function saveListToLocalstorage() {
   localStorage.setItem("cardList", JSON.stringify(cardList));
 }
@@ -25,7 +27,7 @@ function renderCard(newCardList, newNote) {
     noteContent.innerText = element.content;
     const noteDate = document.createElement("p");
     noteDate.classList.add("date");
-    noteDate.innerText = new Date(element.changeDate).toLocaleString("de-DE", {
+    noteDate.innerText = new Date(element.changeDate).toLocaleString("de-CH", {
       day: "2-digit",
       month: "2-digit",
       year: "numeric",
@@ -43,12 +45,15 @@ function renderCard(newCardList, newNote) {
   });
 }
 
-renderCard(newCardList);
-
 /* eine neue notiz erfassen und in der Liste speichern */
 function saveNote() {
   if (newCardList !== null) {
     cardList = newCardList;
+  }
+
+  if (inputTitle.value === "" || inputContent.value === "") {
+    alert("Bitte beide Felder ausfüllen");
+    return;
   }
 
   const newNote = {
