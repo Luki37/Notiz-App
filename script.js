@@ -75,3 +75,15 @@ function saveNote() {
 }
 
 /* eine bestehende notiz anwählen und im inputfeld weiter bearbeiten */
+
+const selectCard = document.querySelectorAll(".card");
+
+selectCard.forEach((card) => {
+  card.addEventListener("click", () => {
+    const cardID = parseInt(card.id);
+    const gefundeneCard = newCardList.find((card) => card.id === cardID);
+
+    inputTitle.value = gefundeneCard.title;
+    inputContent.value = gefundeneCard.content;
+  });
+});
