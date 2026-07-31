@@ -184,4 +184,10 @@ svg {
   #wrapper {
     max-height: 30vh;
   }
+  #input-title {
+    font-size: 1.8rem;
+  }
+  #input-content {
+    font-size: 1rem;
+  }
 }
