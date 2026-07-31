@@ -90,9 +90,15 @@ selectCard.forEach((card) => {
   card.addEventListener("click", () => {
     const cardID = parseInt(card.id);
     const gefundeneCard = newCardList.find((card) => card.id === cardID);
+    const nichtGefundeneCards = cardList.filter((card) => card.id !== cardID);
 
     inputTitle.value = gefundeneCard.title;
     inputContent.value = gefundeneCard.content;
+
+    selectCard.forEach((card) => {
+      card.classList.remove("selected-card");
+    });
+    card.classList.add("selected-card");
 
     selectedCard = cardID;
   });
