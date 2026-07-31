@@ -2,6 +2,8 @@ let cardList = [];
 
 let newCardList = JSON.parse(localStorage.getItem("cardList"));
 
+let selectedCard = "";
+
 const wrapper = document.getElementById("wrapper");
 let inputTitle = document.getElementById("input-title");
 let inputContent = document.getElementById("input-content");
@@ -14,6 +16,8 @@ function saveListToLocalstorage() {
 
 /* objekte aus der listen nehmen und darstellen */
 function renderCard(newCardList, newNote) {
+  if (!newCardList) return;
+
   newCardList.sort((a, b) => new Date(b.changeDate) - new Date(a.changeDate));
   newCardList.forEach((element) => {
     const note = document.createElement("div");
@@ -55,23 +59,27 @@ function saveNote() {
     alert("Bitte beide Felder ausfüllen");
     return;
   }
-
-  const newNote = {
-    id: Date.now(),
-    title: inputTitle.value,
-    content: inputContent.value,
-    changeDate: new Date(Date.now()),
-  };
-
-  cardList.push(newNote);
+  console.log(selectedCard);
+  console.log(newCardList);
+  if (!selectedCard) {
+    const newNote = {
+      id: Date.now(),
+      title: inputTitle.value,
+      content: inputContent.value,
+      changeDate: new Date(Date.now()),
+    };
+    cardList.push(newNote);
+  } else {
+    const gefundeneCard = cardList.find((card) => card.id === selectedCard);
+    gefundeneCard.id = selectedCard;
+    gefundeneCard.title = inputTitle.value;
+    gefundeneCard.content = inputContent.value;
+    gefundeneCard.changeDate = new Date(Date.now());
+  }
 
   saveListToLocalstorage();
 
   location.reload();
-
-  return {
-    newNote,
-  };
 }
 
 /* eine bestehende notiz anwählen und im inputfeld weiter bearbeiten */
@@ -85,5 +93,29 @@ selectCard.forEach((card) => {
 
     inputTitle.value = gefundeneCard.title;
     inputContent.value = gefundeneCard.content;
+
+    selectedCard = cardID;
   });
 });
+
+/*bestehende notiz löschen*/
+
+function delNote() {
+  if (!selectedCard) return;
+  if (confirm("Willst du diese Notiz unwiderruflich löschen?")) {
+    cardList = newCardList;
+    console.log(cardList);
+    const neueListe = cardList.filter((card) => card.id !== selectedCard);
+    console.log(neueListe);
+    cardList = neueListe;
+    saveListToLocalstorage();
+
+    location.reload();
+  } else return;
+}
+
+/*neue Notitz anfangen*/
+
+function createNote() {
+  location.reload();
+}
